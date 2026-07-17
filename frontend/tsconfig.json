@@ -3,7 +3,6 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "types": ["vite/client"],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -21,6 +20,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

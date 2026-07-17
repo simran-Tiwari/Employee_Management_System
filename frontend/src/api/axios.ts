@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+// Cast avoids depending on Vite client types during CI/deploy typecheck
+const API_BASE_URL =
+  (import.meta as unknown as { env: Record<string, string | undefined> }).env
+    .VITE_API_BASE_URL || '/api';
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
+  baseURL: API_BASE_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
