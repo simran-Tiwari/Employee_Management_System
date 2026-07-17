@@ -1,0 +1,43 @@
+# ── Dependencies ──────────────────────────────────────────────
+node_modules/
+
+# ── Environment variables (contain secrets) ───────────────────
+.env
+.env.local
+.env.development
+.env.production
+
+# ── Build output ──────────────────────────────────────────────
+dist/
+build/
+out/
+
+# ── Logs ──────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── OS files ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor / IDE ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Kiro AI assistant folder ──────────────────────────────────
+.kiro/
+
+# ── Project spec (internal planning doc) ─────────────────────
+spec.md
+PROJECT_GUIDE.md
+PROJECT_GUIDE
+
+
+# ── Test coverage ─────────────────────────────────────────────
+coverage/
+
