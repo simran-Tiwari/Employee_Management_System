@@ -8,17 +8,13 @@ const authRoutes = require('./routes/authRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
 const organizationRoutes = require('./routes/organizationRoutes');
 const errorHandler = require('./middleware/errorHandler');
+const { corsOptions } = require('./config/cors');
 
 const app = express();
 
 // Security & parsing middleware
 app.use(helmet());
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? process.env.FRONTEND_URL
-    : ['http://localhost:5173', 'http://localhost:3000'],
-  credentials: true,
-}));
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

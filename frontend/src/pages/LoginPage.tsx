@@ -38,8 +38,16 @@ const LoginPage = () => {
       showToast('Welcome back!', 'success')
       navigate(loggedInUser.role === 'employee' ? '/profile' : '/dashboard')
     } catch (err: unknown) {
-      const axiosErr = err as { response?: { data?: { message?: string } } }
-      const msg = axiosErr?.response?.data?.message || 'Invalid email or password.'
+      const axiosErr = err as {
+        response?: { data?: { message?: string } }
+        code?: string
+        message?: string
+      }
+      const msg =
+        axiosErr?.response?.data?.message ||
+        (axiosErr?.code === 'ERR_NETWORK'
+          ? 'Cannot reach the server. Check API URL and backend CORS settings.'
+          : 'Invalid email or password.')
       showToast(msg, 'error')
     } finally {
       setLoading(false)

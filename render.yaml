@@ -1,0 +1,29 @@
+# Render Blueprint — deploy frontend as Static Site, backend as Web Service
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: employee-management-system
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+
+staticSites:
+  - name: ems-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://employee-management-system-mirl.onrender.com/api
